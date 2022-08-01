@@ -1,9 +1,12 @@
 ﻿using System.Text.Json;
 Dictionary<string, string> dict = new Dictionary<string, string>();
-//dict.Add("hello", "Привет");
-//dict.Add("bye", "Пока");
-//string str = JsonSerializer.Serialize<Dictionary<string, string>>(dict);
-//File.WriteAllText("dictionary.json", str);
+if (!File.Exists("dictionary.json"))
+{
+    dict.Add("hello", "Привет");
+    dict.Add("bye", "Пока");
+    string strfirst = JsonSerializer.Serialize<Dictionary<string, string>>(dict);
+    File.WriteAllText("dictionary.json", strfirst);
+}
 string str = File.ReadAllText("dictionary.json");
 dict = JsonSerializer.Deserialize<Dictionary<string, string>>(str);
 do
